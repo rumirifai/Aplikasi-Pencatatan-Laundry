@@ -57,8 +57,9 @@ Beberapa manfaat didapat dari aplikasi ini adalah :
 ## ERD dan Tabel Relasi
 
 Berikut Entity Relationship Diagram dari aplikasi pencatatan laundry yang kami buat
-
+  ![](img/erd.png)
 Berikut Tabel Relasi dari aplikasi pencatatan laundry yang kami buat
+  ![](img/tabel.png)
 
 <!-- Mockup -->
 ## Mockup
