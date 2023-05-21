@@ -1,41 +1,63 @@
-create database laundry;
+CREATE DATABASE laundry;
 
-use laundry;
+USE laundry;
 
-create table pelanggan(
-    id_pelanggan int not null,
-    nama varchar(64),
-    alamat address,
-    kontak varchar(20),
-    primary key (id_pelanggan)
+CREATE TABLE prioritas
+(
+    id_prioritas INT NOT NULL PRIMARY KEY,
+    jenis_prioritas CHAR(15)
 );
 
-create table permintaan_cucian(
-    no_cucian int not null,
-    id_pelanggan int not null,
-    id_item int not null,
-    jenis_cucian varchar(30),
-    jumlah_cucian int,
-    prioritas_cucian varchar(30),
-    tgl_cucian date,
-    primary key (no_cucian)
+CREATE TABLE item
+(
+    id_item CHAR(3) NOT NULL PRIMARY KEY,
+    jenis_item VARCHAR(25)
+)
+
+CREATE TABLE pelanggan
+(
+    id_pelanggan CHAR(5) NOT NULL PRIMARY KEY,
+    nama VARCHAR(64),
+    alamat VARCHAR(128),
+    telepon CHAR(12)
 );
 
-create table item_cucian(
-    id_item int not null,
-    no_cucian int not null,
-    jenis_item varchar(30),
-    ukuran varchar(10),
-    warna varchar(10),
-    primary key (id_item)
+CREATE TABLE permintaan_cucian
+(
+    no_cucian INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id_pelanggan CHAR(6),
+    id_prioritas INT,
+    no_itemCucian INT, 
+    jumlah_cucian INT,
+    status_cucian VARCHAR(15),
+    tgl_mulai DATE,
+    tgl_selesai DATE,
+    FOREIGN KEY (id_pelanggan) REFERENCES pelanggan(id_pelanggan),
+    FOREIGN KEY (id_prioritas) REFERENCES prioritas(id_prioritas),
+    FOREIGN KEY (no_itemCucian) REFERENCES item_cucian(no_itemCucian)
 );
 
-create table transaksi(
-    no_transaksi int not null,
-    id_pelanggan int not null,
-    no_cucian int not null,
-    id_item int not null,
-    stat varchar(30),
-    subtotal varchar(30),
-    primary key (no_transaksi)
+CREATE TABLE item_cucian
+(
+    no_itemCucian INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    no_cucian INT,
+    id_item CHAR(3),
+    ukuran CHAR(3),
+    warna CHAR(10),
+    harga_item INT,
+    FOREIGN KEY (no_cucian) REFERENCES permintaan_cucian(no_cucian),
+    FOREIGN KEY (id_item) REFERENCES item(id_item)
 );
+
+CREATE TABLE transaksi
+(
+    no_transaksi CHAR(6) NOT NULL PRIMARY KEY,
+    id_pelanggan CHAR(5),
+    no_cucian INT,
+    no_itemCucian INT,
+    status_transaksi VARCHAR(20),
+    subtotal INT,
+    FOREIGN KEY (id_pelanggan) REFERENCES pelanggan(id_pelanggan),
+    FOREIGN KEY (no_cucian) REFERENCES permintaan_cucian(no_cucian),
+    FOREIGN KEY (no_itemCucian) REFERENCES item_cucian(no_itemCucian)
+)
