@@ -1,0 +1,158 @@
+/* CSS khusus untuk halaman pelanggan.php */
+#main .admin table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#main .admin table th,
+#main .admin table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#main .admin table th {
+  background-color: #f7f7f7;
+  font-weight: bold;
+  color: #333;
+}
+
+#main .admin table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#main .admin table td a {
+  display: inline-block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 3px;
+  transition: opacity 0.3s ease;
+}
+
+#main .admin table td a.btn-primary {
+  background-color: #4154f1;
+}
+
+#main .admin table td a.btn-danger {
+  background-color: #ff5a5f;
+}
+
+#main .admin table td a.btn-primary:hover,
+#main .admin table td a.btn-danger:hover {
+  opacity: 0.8;
+}
+
+#main .admin table td a.btn-primary:focus,
+#main .admin table td a.btn-danger:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(65, 84, 241, 0.4);
+}
+
+#main .admin table td a.btn-primary:active,
+#main .admin table td a.btn-danger:active {
+  transform: translateY(1px);
+}
+
+#main .admin table td a.btn-primary:disabled,
+#main .admin table td a.btn-danger:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* Style tambahan untuk tampilan minimalis dan elegan */
+#main .admin h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#main .admin .text-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#main .admin .form-inline {
+  margin-top: 10px;
+}
+
+#main .admin .form-inline label {
+  margin-right: 10px;
+}
+
+#main .admin .pagination {
+  margin-top: 20px;
+}
+
+#main .admin .pagination .page-item {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+#main .admin .pagination .page-link {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+#main .admin .pagination .page-link:hover {
+  background-color: #f7f7f7;
+}
+
+#main .admin .pagination .page-link:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(65, 84, 241, 0.4);
+}
+
+#main .admin .pagination .page-item.active .page-link {
+  background-color: #4154f1;
+  color: #fff;
+  border-color: #4154f1;
+}
+
+#main .admin .form-control {
+  width: 200px;
+}
+
+#main .admin .btn-primary {
+  background-color: #4154f1;
+  border-color: #4154f1;
+}
+
+#main .admin .btn-primary:hover {
+  background-color: #2f3fd7;
+  border-color: #2f3fd7;
+}
+
+#main .admin .btn-primary:focus,
+#main .admin .btn-primary:active {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(65, 84, 241, 0.4);
+}
+
+#main .admin .btn-danger {
+  background-color: #ff5a5f;
+  border-color: #ff5a5f;
+}
+
+#main .admin .btn-danger:hover {
+  background-color: #e24c51;
+  border-color: #e24c51;
+}
+
+#main .admin .btn-danger:focus,
+#main .admin .btn-danger:active {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 90, 95, 0.4);
+}
+
+  /* Additional styles to adjust the content position */
+  #main {
+    padding-top: 70px; /* Adjust the value as needed */
+  }
