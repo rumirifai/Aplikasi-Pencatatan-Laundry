@@ -45,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 mysqli_close($conn);
 ?>
 
-<?php include 'head.php'; ?>
 <?php include 'header.php'; ?>
 
 <style>

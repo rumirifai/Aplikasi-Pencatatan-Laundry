@@ -24,7 +24,6 @@ $resultTransaksi = mysqli_query($conn, $queryTransaksi);
 mysqli_close($conn);
 ?>
 
-<?php include 'head.php'; ?>
 <?php include 'header.php'; ?>
 
 <style>

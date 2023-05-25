@@ -17,7 +17,6 @@ $result = mysqli_query($conn, $query);
 mysqli_close($conn);
 ?>
 
-<?php include 'head.php'; ?>
 <?php include 'header.php'; ?>
 
 <style>

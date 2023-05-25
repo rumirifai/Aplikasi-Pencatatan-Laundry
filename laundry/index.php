@@ -1,7 +1,7 @@
 <?php
 ?>
 <!DOCTYPE html>
-<html lang="en">
+< tml lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -11,9 +11,15 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <style>
+    h2 {
+      text-align: justify;
+    }
+  </style>
+
   <!-- Favicons -->
-  <link href="assets/img/laundry.png" rel="icon">
-  <link href="assets/img/laundry.png" rel="apple-touch-icon">
+  <link href="assets/img/logo.png" rel="icon">
+  <link href="assets/img/logo.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -31,7 +37,7 @@
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
       <a href="index.php" class="logo d-flex align-items-center">
-        <img src="assets/img/laundry.png" alt="">
+        <img src="assets/img/logo.png" alt="">
         <span>LaundryKu</span>
       </a>
 
@@ -50,8 +56,8 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">Kami menawarkan service laundry terbaik</h1>
-          <h2 data-aos="fade-up" data-aos-delay="400">Ada cucian? Serahkan kepada kami.</h2>
+          <h1 data-aos="fade-up">Kami Menawarkan Service Laundry Terbaik</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">Ada Cucian? Serahkan Kepada Kami.</h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
               <a href="login.php" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
@@ -69,26 +75,25 @@
   </section><!-- End Hero -->
 
   <main id="main">
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-        <div class="row gx-0">
-          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
-            <div class="content">
-              <h3>LaundryKu itu apa sih?</h3>
-              <h2>Apa aja</h2>
-              <p>
-               nananananhahahaha
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="assets/img/laundry.png" class="img-fluid" alt="">
+      <!-- ======= About Section ======= -->
+      <section id="about" class="about"> 
+        <div class="container" data-aos="fade-up">
+          <div class="row gx-0">
+            <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+              <div class="content">
+                <h3>LaundryKu itu apa sih?</h3>
+                <h2 class="text-justify">LaundryKu adalah sebuah website yang memudahkan pengguna untuk memesan layanan laundry secara online. Website ini menyediakan platform yang memungkinkan pengguna untuk mencuci pakaian mereka dengan mudah tanpa harus pergi ke tempat laundry fisik.</h2>
+                <p class="text-justify">
+            </p>
           </div>
         </div>
+        <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+          <img src="assets/img/laundry.png" class="img-fluid" alt="">
+        </div>
       </div>
-    </section><!-- End About Section -->
-  </main><!-- End #main -->
+    </div>
+  </section><!-- End About Section -->
+    </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -97,10 +102,14 @@
         <div class="row gy-4">
           <div class="col-lg-5 col-md-12 footer-info">
             <a href="index.php" class="logo d-flex align-items-center">
-              <img src="assets/img/laundry.png" alt="">
-              <span>LaundyKu</span>
+              <img src="assets/img/logo.png" alt="">
+              <span>LaundryKu</span>
             </a>
-            <p>blablablablabla</p>
+            <p>Website ini dibuat untuk memenuhi tugas akhir praktikum sistem database I</p>
+            <p>Kelompok 4 :</p>
+            <p>1. Alif Al Husaini (140810220036)</p>
+            <p>2. Nurkahfi Amran Rahmada (140810220020)</p>
+            <p>3. M Rumi Rifai (140810220026)</p>
           </div>
           <div class="col-lg-2 col-6 footer-links">
           </div>
@@ -113,7 +122,7 @@
     </div>
     <div class="container">
       <div class="credits">
-        LaundryKu
+        Ⓒ2023 KELOMPOK 4 SISTEM DATABASE I TEKNIK INFORMATIKA UNPAD 2022
       </div>
     </div>
   </footer><!-- End Footer -->

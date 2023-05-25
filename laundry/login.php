@@ -38,8 +38,8 @@ mysqli_close($conn);
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/laundry.png" rel="icon">
-  <link href="assets/img/laundry.png" rel="apple-touch-icon">
+  <link href="assets/img/logo.png" rel="icon">
+  <link href="assets/img/logo.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link
@@ -56,7 +56,7 @@ mysqli_close($conn);
 
 <style>
   body {
-    background-color: #f8f9fa;
+    background-color: #B9EDDD;
   }
 
   .login-container {
