@@ -49,8 +49,8 @@ if (isset($_POST['lanjutkan'])) {
 
         // Menyimpan data permintaan cucian ke tabel PermintaanCucian
         $idPelanggan = $_SESSION['id_pelanggan'];
-        $insertQuery = "INSERT INTO PermintaanCucian (id_pelanggan, id_prioritas, tgl_masuk, tgl_selesai)
-                        VALUES ('$idPelanggan', '$idPrioritas', '$tanggalMasuk', '$tanggalKeluar')";
+        $insertQuery = "INSERT INTO PermintaanCucian (id_pelanggan, id_prioritas, tgl_masuk, tgl_selesai, id_status_cucian)
+                        VALUES ('$idPelanggan', '$idPrioritas', '$tanggalMasuk', '$tanggalKeluar', '1')";
         mysqli_query($conn, $insertQuery);
 
         // Mengalihkan ke halaman edit_item_cucian_pelanggan.php setelah berhasil menyimpan

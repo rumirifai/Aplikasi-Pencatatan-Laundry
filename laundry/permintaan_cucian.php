@@ -15,7 +15,6 @@ if (isset($_POST['no_cucian']) && isset($_POST['status'])) {
   $noCucian = $_POST['no_cucian'];
   $status = $_POST['status'];
 
-<<<<<<< HEAD
   // Update status cucian dan total_item dalam database
   $updateQuery = "UPDATE PermintaanCucian SET id_status_cucian = '$status', total_item = (SELECT SUM(jumlah_item) FROM itemCucian WHERE no_cucian = $noCucian) WHERE no_cucian = $noCucian";
   mysqli_query($conn, $updateQuery);
@@ -46,36 +45,13 @@ $result = mysqli_query($conn, $query);
 
 ?>
 
-=======
-  // Update status cucian dalam database
-  $updateQuery = "UPDATE PermintaanCucian SET status_cucian = '$status' WHERE no_cucian = $noCucian";
-  mysqli_query($conn, $updateQuery);
-}
-
-// Query untuk mendapatkan daftar permintaan cucian dari tabel PermintaanCucian
-$query = "SELECT pc.*, p.nama, pri.jenis_prioritas 
-          FROM PermintaanCucian pc
-          INNER JOIN Pelanggan p ON pc.id_pelanggan = p.id_pelanggan
-          LEFT JOIN Prioritas pri ON pc.id_prioritas = pri.id_prioritas";
-$result = mysqli_query($conn, $query);
-
-mysqli_close($conn);
-?>
-
-
-
->>>>>>> 364a50b9e8a279b5cebdb5817e64cb6bb6c6448a
 <?php include 'header.php'; ?>
 
 <style>
   /* Additional styles to adjust the content position */
   #main {
-<<<<<<< HEAD
     padding-top: 70px;
     /* Adjust the value as needed */
-=======
-    padding-top: 70px; /* Adjust the value as needed */
->>>>>>> 364a50b9e8a279b5cebdb5817e64cb6bb6c6448a
   }
 </style>
 
@@ -106,7 +82,6 @@ mysqli_close($conn);
               </tr>
             </thead>
             <tbody>
-<<<<<<< HEAD
               <?php while ($row = mysqli_fetch_assoc($result)): ?>
                 <?php
                 $noCucian = $row['no_cucian'];
@@ -167,35 +142,6 @@ mysqli_close($conn);
                 </tr>
               <?php endwhile; ?>
 
-=======
-              <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-                <tr>
-                  <td><?php echo $row['no_cucian']; ?></td>
-                  <td><?php echo $row['nama']; ?></td>
-                  <td><?php echo $row['jenis_prioritas']; ?></td>
-                  <td><?php echo $row['tgl_masuk']; ?></td>
-                  <td><?php echo $row['tgl_selesai']; ?></td>
-                  <td><?php echo $row['total_item']; ?></td>
-                  <td>
-                    <form action="permintaan_cucian.php" method="POST">
-                      <input type="hidden" name="no_cucian" value="<?php echo $row['no_cucian']; ?>">
-                      <div class="input-group">
-                        <select name="status" class="form-control" onchange="this.form.submit()">
-                          <option value="Menunggu" <?php if ($row['status_cucian'] == 'Menunggu') echo 'selected'; ?>>Menunggu</option>
-                          <option value="Sedang Diproses" <?php if ($row['status_cucian'] == 'Sedang Diproses') echo 'selected'; ?>>Sedang Diproses</option>
-                          <option value="Selesai" <?php if ($row['status_cucian'] == 'Selesai') echo 'selected'; ?>>Selesai</option>
-                        </select>
-                      </div>
-                    </form>
-                  </td>
-                  <td>
-                    <a href="detail_cucian.php?no_cucian=<?php echo $row['no_cucian']; ?>" class="btn btn-primary btn-sm">Detail Cucian</a>
-                    <a href="edit_permintaan_cucian.php?no_cucian=<?php echo $row['no_cucian']; ?>" class="btn btn-primary btn-sm">Edit</a>
-                    <a href="hapus_permintaan_cucian.php?no_cucian=<?php echo $row['no_cucian']; ?>" class="btn btn-danger btn-sm">Hapus</a>
-                  </td>
-                </tr>
-              <?php endwhile; ?>
->>>>>>> 364a50b9e8a279b5cebdb5817e64cb6bb6c6448a
             </tbody>
           </table>
         </div>
@@ -204,8 +150,4 @@ mysqli_close($conn);
   </section>
 </main>
 
-<<<<<<< HEAD
 <?php include 'footer.php'; ?>
-=======
-<?php include 'footer.php'; ?>
->>>>>>> 364a50b9e8a279b5cebdb5817e64cb6bb6c6448a

@@ -8,8 +8,4 @@
       </div>
     </div>
   </div>
-<<<<<<< HEAD
 </footer><!-- End Footer -->  
-=======
-</footer><!-- End Footer -->  
->>>>>>> 364a50b9e8a279b5cebdb5817e64cb6bb6c6448a
