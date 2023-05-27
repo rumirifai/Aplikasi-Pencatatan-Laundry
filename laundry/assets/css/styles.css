@@ -1,4 +1,9 @@
 /* CSS khusus untuk halaman pelanggan.php */
+#main {
+  background-color: #B9EDDD; 
+  min-height: calc(100vh - 30px); 
+}
+
 #main .admin table {
   width: 100%;
   border-collapse: collapse;
@@ -13,13 +18,17 @@
 }
 
 #main .admin table th {
-  background-color: #f7f7f7;
+  background-color: #FA9884;
+  color: #fff;
   font-weight: bold;
-  color: #333;
+}
+
+#main .admin table tr:nth-child(odd) {
+  background-color: #FFF3E2;
 }
 
 #main .admin table tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #FFE5CA;
 }
 
 #main .admin table td a {
@@ -32,11 +41,11 @@
 }
 
 #main .admin table td a.btn-primary {
-  background-color: #4154f1;
+  background-color: #E74646;
 }
 
 #main .admin table td a.btn-danger {
-  background-color: #ff5a5f;
+  background-color: #ae00ff;
 }
 
 #main .admin table td a.btn-primary:hover,
@@ -111,9 +120,9 @@
 }
 
 #main .admin .pagination .page-item.active .page-link {
-  background-color: #4154f1;
+  background-color: #E74646;
   color: #fff;
-  border-color: #4154f1;
+  border-color: #E74646;
 }
 
 #main .admin .form-control {
@@ -121,8 +130,8 @@
 }
 
 #main .admin .btn-primary {
-  background-color: #4154f1;
-  border-color: #4154f1;
+  background-color: #E74646;
+  border-color: #E74646;
 }
 
 #main .admin .btn-primary:hover {
@@ -137,8 +146,8 @@
 }
 
 #main .admin .btn-danger {
-  background-color: #ff5a5f;
-  border-color: #ff5a5f;
+  background-color: #ae00ff;
+  border-color: #ae00ff;
 }
 
 #main .admin .btn-danger:hover {
@@ -156,3 +165,73 @@
   #main {
     padding-top: 70px; /* Adjust the value as needed */
   }
+
+/*css untuk card */
+#main .card-wrapper {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#main .card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  text-align: center;
+}
+
+#main .admin .card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#main .admin .card-text {
+  margin-bottom: 0;
+}
+
+#main .admin .card-image {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+#main .admin .highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+#main .admin .owl-carousel.owl-theme .owl-nav {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#main .admin .owl-carousel.owl-theme .owl-nav .owl-prev,
+#main .admin .owl-carousel.owl-theme .owl-nav .owl-next {
+  font-size: 24px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+#main .admin .owl-carousel.owl-theme .owl-nav .owl-prev:hover,
+#main .admin .owl-carousel.owl-theme .owl-nav .owl-next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#main .admin .owl-carousel.owl-theme .owl-nav .owl-prev {
+  margin-left: 20px;
+}
+
+#main .admin .owl-carousel.owl-theme .owl-nav .owl-next {
+  margin-right: 20px;
+}

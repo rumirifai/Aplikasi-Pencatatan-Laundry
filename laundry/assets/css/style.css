@@ -9,12 +9,12 @@ body {
 }
 
 a {
-  color: #4154f1;
+  color: #f4f4f4;
   text-decoration: none;
 }
 
 a:hover {
-  color: #717ff5;
+  color: #cdcdcd;
   text-decoration: none;
 }
 
@@ -64,7 +64,7 @@ section {
 # Header
 --------------------------------------------------------------*/
 .header {
-  background: #939eff;
+  background: #569DAA;
   transition: all 0.5s;
   z-index: 997;
   padding: 20px 0;
@@ -145,12 +145,12 @@ section {
   padding: 8px 20px;
   margin-left: 30px;
   border-radius: 4px;
-  color: #fff;
+  color: #B9EDDD;
 }
 
 .navbar .getstarted:hover,
 .navbar .getstarted:focus:hover {
-  color: #fff;
+  color: #B9EDDD;
   background: #5969f3;
 }
 
@@ -164,7 +164,7 @@ section {
   z-index: 99;
   opacity: 0;
   visibility: hidden;
-  background: #fff;
+  background: #B9EDDD;
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
   transition: 0.3s;
   border-radius: 4px;
@@ -250,7 +250,7 @@ section {
   padding: 15px 40px;
   border-radius: 4px;
   transition: 0.5s;
-  color: #fff;
+  color: #B9EDDD;
   background: #4154f1;
   box-shadow: 0px 5px 30px rgba(65, 84, 241, 0.4);
 }
@@ -282,8 +282,12 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+.about {
+  background: #B9EDDD;
+}
+
 .about .content {
-  background-color: #f6f9ff;
+  background-color: #B9EDDD;
   padding: 40px;
 }
 
@@ -309,17 +313,16 @@ section {
 # Footer
 --------------------------------------------------------------*/
 .footer {
-  background: #f6f9ff;
+  background: #569DAA;
   padding: 0 0 30px 0;
   font-size: 14px;
 }
 
-
 .footer .footer-top {
-  background: white;
+  background: #569DAA;
   background-size: contain;
-  border-top: 1px solid #e1ecff;
-  border-bottom: 1px solid #e1ecff;
+  border-top: 1px solid #569DAA;
+  border-bottom: 1px solid #569DAA;
   padding: 60px 0 30px 0;
 }
 
@@ -354,7 +357,6 @@ section {
   position: relative;
   padding-bottom: 12px;
 }
-
 
 .footer .footer-top .footer-links ul li {
   padding: 10px 0;
@@ -407,7 +409,7 @@ section {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: #ffffff;
+    background-color: #B9EDDD;
     padding: 20px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   }
@@ -432,7 +434,7 @@ section {
 .navbar ul li a i {
   margin-right: 4px;
 }
-.navbar ul li a {
+.navbar ul li a { 
   display: flex;
   align-items: center;
   gap: 8px;
@@ -449,4 +451,8 @@ section {
 }
 .navbar a.dashboard-link {
   color: #012970;
+}
+
+.back-to-top {
+  background: #569DAA;
 }
