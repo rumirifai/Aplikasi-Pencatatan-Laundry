@@ -1,6 +1,19 @@
 <?php
 include "config.php";
 
+<<<<<<< HEAD
+=======
+// Memeriksa apakah pelanggan telah login
+session_start();
+
+// Periksa apakah pelanggan telah login atau alihkan ke halaman login jika belum
+if (!isset($_SESSION['username'])) {
+  header("Location: login.php");
+  exit;
+}
+
+// Query untuk mendapatkan daftar prioritas dari tabel Prioritas
+>>>>>>> 364a50b9e8a279b5cebdb5817e64cb6bb6c6448a
 $query = "SELECT * FROM Prioritas";
 $result = mysqli_query($conn, $query);
 
@@ -9,9 +22,18 @@ mysqli_close($conn);
 
 <?php include 'header.php'; ?>
 
+<<<<<<< HEAD
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
+=======
+<style>
+  /* Additional styles to adjust the content position */
+  #main {
+    padding-top: 70px; /* Adjust the value as needed */
+  }
+</style>
+>>>>>>> 364a50b9e8a279b5cebdb5817e64cb6bb6c6448a
 
 <main id="main">
   <section id="admin" class="admin">
@@ -26,6 +48,7 @@ mysqli_close($conn);
       </div>
       <div class="row">
         <div class="col-lg-12">
+<<<<<<< HEAD
           <div class="owl-carousel owl-theme">
             <?php while ($row = mysqli_fetch_assoc($result)) : ?>
               <div class="card">
@@ -50,12 +73,36 @@ mysqli_close($conn);
               </div>
             <?php endwhile; ?>
           </div>
+=======
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Jenis Prioritas</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                <tr>
+                  <td><?php echo $row['id_prioritas']; ?></td>
+                  <td><?php echo $row['jenis_prioritas']; ?></td>
+                  <td>
+                    <a href="edit_prioritas.php?id=<?php echo $row['id_prioritas']; ?>" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="hapus_prioritas.php?id=<?php echo $row['id_prioritas']; ?>" class="btn btn-danger btn-sm">Hapus</a>
+                  </td>
+                </tr>
+              <?php endwhile; ?>
+            </tbody>
+          </table>
+>>>>>>> 364a50b9e8a279b5cebdb5817e64cb6bb6c6448a
         </div>
       </div>
     </div>
   </section>
 </main>
 
+<<<<<<< HEAD
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
@@ -70,4 +117,6 @@ mysqli_close($conn);
   });
 </script>
 
+=======
+>>>>>>> 364a50b9e8a279b5cebdb5817e64cb6bb6c6448a
 <?php include 'footer.php'; ?>

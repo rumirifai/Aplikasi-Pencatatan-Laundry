@@ -30,7 +30,10 @@ $resultTransaksi = mysqli_query($conn, $queryTransaksi);
 mysqli_close($conn);
 ?>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 364a50b9e8a279b5cebdb5817e64cb6bb6c6448a
 <?php include 'header.php'; ?>
 
 <style>
