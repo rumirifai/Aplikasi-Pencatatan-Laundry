@@ -22,7 +22,7 @@ mysqli_close($conn);
 
 <?php include 'header.php'; ?>
 
-<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/vendor/DataTables/dataTables.min.css">
 <main id="main">
   <section id="admin" class="admin">
     <div class="container">
@@ -30,13 +30,13 @@ mysqli_close($conn);
         <div class="col-lg-12">
           <h2>Daftar Pelanggan</h2>
           <div class="text-right">
-            
+            <a href="tambah_pelanggan.php" class="btn btn-primary btn-sm">Tambah Pelanggan</a>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <table class="table table-bordered">
+          <table id="tabel-pelanggan" class="table table-bordered">
             <thead>
               <tr>
                 <th>No.</th>
@@ -73,3 +73,10 @@ mysqli_close($conn);
 </main>
 
 <?php include 'footer.php'; ?>
+
+<script src="assets/vendor/DataTables/DataTables-1.13.4/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#tabel-pelanggan').DataTable();
+  });
+</script>

@@ -181,6 +181,8 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   padding: 20px;
   text-align: center;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 #main .admin .card-title {
@@ -235,3 +237,4 @@
 #main .admin .owl-carousel.owl-theme .owl-nav .owl-next {
   margin-right: 20px;
 }
+

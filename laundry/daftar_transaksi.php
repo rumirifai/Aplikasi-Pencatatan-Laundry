@@ -71,7 +71,7 @@ mysqli_close($conn);
 ?>
 
 <?php include 'header.php'; ?>
-
+<link rel="stylesheet" href="assets/vendor/DataTables/dataTables.min.css">
 <link rel="stylesheet" href="assets/css/styles.css">
 <main id="main">
   <section id="admin" class="admin">
@@ -83,7 +83,7 @@ mysqli_close($conn);
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <table class="table table-bordered">
+          <table id="tabel-transaksi" class="table table-bordered">
             <thead>
               <tr>
                 <th>No.</th>
@@ -141,3 +141,10 @@ mysqli_close($conn);
 </main>
 
 <?php include 'footer.php'; ?>
+
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#tabel-transaksi').DataTable();
+  });
+</script>

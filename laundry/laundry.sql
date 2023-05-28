@@ -6,6 +6,7 @@ CREATE TABLE Pelanggan (
     telepon VARCHAR(15) NOT NULL,
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
+    profil_image_url VARCHAR (255),
     role VARCHAR(255) NOT NULL DEFAULT 'pelanggan'
 );
 
@@ -253,12 +254,6 @@ END //
 DELIMITER ;
 
 
-
--- Menambahkan data ke tabel Pelanggan
-INSERT INTO Pelanggan (nama, alamat, telepon, username, password) VALUES
-('John Doe', 'Jl. Raya No. 123', '081234567890', 'johndoe', 'password123'),
-('Jane Smith', 'Jl. Utama No. 456', '089876543210', 'janesmith', 'password456');
-
 -- Mengisi tabel Prioritas
 INSERT INTO Prioritas (jenis_prioritas, keterangan, durasi, image_url)
 VALUES
@@ -274,26 +269,68 @@ INSERT INTO StatusCucian (jenis_status_cucian) VALUES
     ('Sedang diproses'),
     ('Selesai');
 
--- Menambahkan data ke tabel PermintaanCucian
-INSERT INTO PermintaanCucian (id_pelanggan, id_prioritas, tgl_masuk, total_item, id_status_cucian) VALUES
-(1, 2, '2023-05-25', 0, 1),
-(2, 3, '2023-05-26', 0, 1);
-
 -- Menambahkan data ke tabel Item
 INSERT INTO Item (jenis_item, harga_per_item, id_prioritas) VALUES
-('Baju', 17000, 1),
-('Baju', 15000, 2),
-('Celana', 22000, 1),
-('Celana', 20000, 2),
-('Kemeja', 22000, 1),
-('Kemeja', 20000, 2);
-
--- Menambahkan data ke tabel ItemCucian
-INSERT INTO ItemCucian (no_cucian, id_item, ukuran, warna, jumlah_item, harga_itemCucian, id_prioritas) VALUES
-(1, 1, 'M', 'Merah', 2, 0, 1),
-(1, 3, 'L', 'Biru', 3, 0, 1),
-(2, 1, 'S', 'Hitam', 1, 0, 1),
-(2, 3, 'XL', 'Putih', 2, 0, 1);
+    ('Baju', 17000, 1),
+    ('Baju', 16000, 2),
+    ('Baju', 15000, 3),
+    ('Baju', 14000, 4),
+    ('Celana', 22000, 1),
+    ('Celana', 21000, 2),
+    ('Celana', 20000, 3),
+    ('Celana', 19000, 4),
+    ('Kemeja', 22000, 1),
+    ('Kemeja', 21000, 2),
+    ('Kemeja', 20000, 3),
+    ('Kemeja', 19000, 4),
+    ('Jaket', 28000, 1),
+    ('Jaket', 27000, 2),
+    ('Jaket', 26000, 3),
+    ('Jaket', 25000, 4),
+    ('Sweater', 25000, 1),
+    ('Sweater', 24000, 2),
+    ('Sweater', 23000, 3),
+    ('Sweater', 22000, 4),
+    ('Jas', 35000, 1),
+    ('Jas', 34000, 2),
+    ('Jas', 33000, 3),
+    ('Jas', 32000, 4),
+    ('Rok', 18000, 1),
+    ('Rok', 17000, 2),
+    ('Rok', 16000, 3),
+    ('Rok', 15000, 4),
+    ('Scarf', 12000, 1),
+    ('Scarf', 11000, 2),
+    ('Scarf', 10000, 3),
+    ('Scarf', 9000, 4),
+    ('Topi', 10000, 1),
+    ('Topi', 9000, 2),
+    ('Topi', 8000, 3),
+    ('Topi', 7000, 4),
+    ('Sarung Tangan', 8000, 1),
+    ('Sarung Tangan', 7000, 2),
+    ('Sarung Tangan', 6000, 3),
+    ('Sarung Tangan', 5000, 4),
+    ('Kaos Kaki', 7000, 1),
+    ('Kaos Kaki', 6000, 2),
+    ('Kaos Kaki', 5000, 3),
+    ('Kaos Kaki', 4000, 4),
+    ('Selimut', 40000, 1),
+    ('Selimut', 39000, 2),
+    ('Selimut', 38000, 3),
+    ('Selimut', 37000, 4),
+    ('Handuk', 15000, 1),
+    ('Handuk', 14000, 2),
+    ('Handuk', 13000, 3),
+    ('Handuk', 12000, 4),
+    ('Bantal', 12000, 1),
+    ('Bantal', 11000, 2),
+    ('Bantal', 10000, 3),
+    ('Bantal', 9000, 4),
+    ('Gorden', 30000, 1),
+    ('Gorden', 29000, 2),
+    ('Gorden', 28000, 3),
+    ('Gorden', 27000, 4);
 
 -- Menambahkan data ke tabel StatusTransaksi
 INSERT INTO StatusTransaksi (jenis_status_transaksi) VALUES

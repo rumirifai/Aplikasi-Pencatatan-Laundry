@@ -68,7 +68,7 @@ $result = mysqli_query($conn, $query);
       </div>
       <div class="row">
         <div class="col-lg-12">
-          <table class="table">
+          <table id="tabel-cucian" class="table">
             <thead>
               <tr>
                 <th>No. Cucian</th>
@@ -135,7 +135,10 @@ $result = mysqli_query($conn, $query);
                     <?php elseif ($row['jenis_status_cucian'] != 'Selesai' && !empty($row['no_transaksi'])): ?>
                       <a href="edit_permintaan_cucian.php?no_cucian=<?php echo $row['no_cucian']; ?>"
                         class="btn btn-primary btn-sm">Edit</a>
+                      <a href="hapus_permintaan_cucian.php?hapus=<?php echo $row['no_cucian']; ?>"
+                        class="btn btn-danger btn-sm" disabled>Hapus</a>
                     <?php endif; ?>
+
                     <a href="detail_cucian.php?no_cucian=<?php echo $row['no_cucian']; ?>"
                       class="btn btn-info btn-sm">Detail Cucian</a>
                   </td>
@@ -151,3 +154,10 @@ $result = mysqli_query($conn, $query);
 </main>
 
 <?php include 'footer.php'; ?>
+<link rel="stylesheet" href="assets/vendor/DataTables/dataTables.min.css">
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#tabel-cucian').DataTable();
+  });
+</script>

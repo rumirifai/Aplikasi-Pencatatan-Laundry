@@ -35,6 +35,14 @@ $query = "SELECT * FROM PermintaanCucian WHERE no_cucian = '$noCucian'";
 $result = mysqli_query($conn, $query);
 $permintaan = mysqli_fetch_assoc($result);
 
+// Query untuk mendapatkan nilai no_transaksi dari database
+$query = "SELECT no_transaksi FROM Transaksi WHERE no_cucian = '$noCucian'";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+
+// Mendefinisikan variabel $no_transaksi
+$no_transaksi = $row['no_transaksi'];
+
 // Memeriksa apakah permintaan cucian ditemukan
 if (!$permintaan) {
     header("Location: permintaan_cucian.php");
@@ -62,19 +70,30 @@ $error = '';
 
 // Memproses saat tombol "Simpan" ditekan
 if (isset($_POST['simpan'])) {
-    // Mengambil data dari form
-    $idPelanggan = $_POST['id_pelanggan'];
-    $idPrioritas = $_POST['id_prioritas'];
-    $tglMasuk = $_POST['tgl_masuk'];
-    $tglSelesai = $_POST['tgl_selesai'];
-    $idStatusCucian = $_POST['id_status_cucian'];
 
+    $idStatusCucian = $_POST['id_status_cucian'];
     // Validasi data
-    if (empty($idPelanggan) || empty($idPrioritas) || empty($tglMasuk) || empty($tglSelesai) || empty($idStatusCucian)) {
-        $error = "Silakan lengkapi semua field.";
+    if (empty($idStatusCucian)) {
+        $error = "Silakan pilih status transaksi.";
     } else {
-        // Mengupdate data permintaan cucian di tabel PermintaanCucian
-        $updateQuery = "UPDATE PermintaanCucian SET id_pelanggan = '$idPelanggan', id_prioritas = '$idPrioritas', tgl_masuk = '$tglMasuk', tgl_selesai = '$tglSelesai', total_item = '$totalItem', id_status_cucian = '$idStatusCucian' WHERE no_cucian = '$noCucian'";
+        if ($no_transaksi) {
+            // Jika no_transaksi sudah ada, hanya status yang diperbarui
+            $updateQuery = "UPDATE PermintaanCucian SET id_status_cucian = '$idStatusCucian' WHERE no_cucian = '$noCucian'";
+        } else {
+            // Mengambil data dari form
+            $idPelanggan = $_POST['id_pelanggan'];
+            $idPrioritas = $_POST['id_prioritas'];
+            $tglMasuk = $_POST['tgl_masuk'];
+            $tglSelesai = $_POST['tgl_selesai'];
+
+            // Validasi data lainnya jika no_transaksi tidak ada
+            if (empty($idPelanggan) || empty($idPrioritas) || empty($tglMasuk) || empty($tglSelesai)) {
+                $error = "Silakan lengkapi semua field.";
+            } else {
+                // Mengupdate data permintaan cucian di tabel PermintaanCucian
+                $updateQuery = "UPDATE PermintaanCucian SET id_pelanggan = '$idPelanggan', id_prioritas = '$idPrioritas', tgl_masuk = '$tglMasuk', tgl_selesai = '$tglSelesai', id_status_cucian = '$idStatusCucian' WHERE no_cucian = '$noCucian'";
+            }
+        }
         mysqli_query($conn, $updateQuery);
 
         // Mengalihkan kembali ke halaman permintaan_cucian.php setelah permintaan cucian diperbarui
@@ -82,6 +101,7 @@ if (isset($_POST['simpan'])) {
         exit;
     }
 }
+
 $queryItem = "SELECT ic.*, i.jenis_item, i.harga_per_item
               FROM ItemCucian ic
               INNER JOIN Item i ON ic.id_item = i.id_item
@@ -105,11 +125,12 @@ mysqli_close($conn);
             </div>
             <div class="row">
                 <div class="col-lg-6">
+
                     <!-- Form Edit Permintaan Cucian -->
                     <form action="" method="POST">
                         <div class="form-group">
                             <label for="id_pelanggan">Pelanggan</label>
-                            <select class="form-control" id="id_pelanggan" name="id_pelanggan">
+                            <select class="form-control" id="id_pelanggan" name="id_pelanggan" <?php echo ($no_transaksi) ? 'disabled' : ''; ?>>
                                 <?php while ($row = mysqli_fetch_assoc($pelangganResult)): ?>
                                     <option value="<?php echo $row['id_pelanggan']; ?>" <?php if ($row['id_pelanggan'] == $permintaan['id_pelanggan'])
                                            echo 'selected'; ?>><?php echo $row['nama']; ?></option>
@@ -118,7 +139,7 @@ mysqli_close($conn);
                         </div>
                         <div class="form-group">
                             <label for="id_prioritas">Prioritas</label>
-                            <select class="form-control" id="id_prioritas" name="id_prioritas">
+                            <select class="form-control" id="id_prioritas" name="id_prioritas" <?php echo ($no_transaksi) ? 'disabled' : ''; ?>>
                                 <?php while ($row = mysqli_fetch_assoc($prioritasResult)): ?>
                                     <option value="<?php echo $row['id_prioritas']; ?>" <?php if ($row['id_prioritas'] == $permintaan['id_prioritas'])
                                            echo 'selected'; ?>><?php echo $row['jenis_prioritas']; ?></option>
@@ -128,24 +149,23 @@ mysqli_close($conn);
                         <div class="form-group">
                             <label for="tgl_masuk">Tanggal Masuk</label>
                             <input type="date" class="form-control" id="tgl_masuk" name="tgl_masuk"
-                                value="<?php echo $permintaan['tgl_masuk']; ?>">
+                                value="<?php echo $permintaan['tgl_masuk']; ?>" <?php echo ($no_transaksi) ? 'disabled' : ''; ?>>
                         </div>
                         <div class="form-group">
                             <label for="tgl_selesai">Tanggal Selesai</label>
                             <input type="date" class="form-control" id="tgl_selesai" name="tgl_selesai"
-                                value="<?php echo $permintaan['tgl_selesai']; ?>">
+                                value="<?php echo $permintaan['tgl_selesai']; ?>" <?php echo ($no_transaksi) ? 'disabled' : ''; ?>>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="total_item">Total Item</label>
                             <input type="number" class="form-control" id="total_item"
                                 value="<?php echo $permintaan['total_item']; ?>" disabled>
                         </div>
 
-
                         <div class="form-group">
                             <label for="id_status_cucian">Status Cucian</label>
-                            <select class="form-control" id="id_status_cucian" name="id_status_cucian">
+                            <select class="form-control" id="id_status_cucian" name="id_status_cucian" <?php echo ($no_transaksi) ? '' : ''; ?>>
                                 <?php while ($row = mysqli_fetch_assoc($statusResult)): ?>
                                     <option value="<?php echo $row['id_status_cucian']; ?>" <?php if ($row['id_status_cucian'] == $permintaan['id_status_cucian'])
                                            echo 'selected'; ?>>
@@ -154,13 +174,14 @@ mysqli_close($conn);
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="simpan" class="btn btn-primary" value="Simpan">
+                            <input type="submit" name="simpan" class="btn btn-primary" value="Simpan" <?php echo ($no_transaksi) ? '' : ''; ?>>
                             <a href="permintaan_cucian.php" class="btn btn-secondary">Batal</a>
                         </div>
                         <div class="text-danger">
                             <?php echo $error; ?>
                         </div>
                     </form>
+
                 </div>
                 <div class="col-lg-6">
                     <!-- Daftar Item -->
@@ -204,10 +225,13 @@ mysqli_close($conn);
                                     </td>
                                     <td>
                                         <a href="edit_item_cucian.php?id=<?php echo $row['no_itemCucian']; ?>&no_cucian=<?php echo $noCucian; ?>"
-                                            class="btn btn-sm btn-primary edit-btn">Edit</a>
+                                            class="btn btn-sm btn-primary <?php if ($no_transaksi)
+                                                echo 'disabled'; ?> edit-btn">Edit</a>
 
                                         <a href="hapus_item_cucian.php?id=<?php echo $row['no_itemCucian']; ?>&no_cucian=<?php echo $noCucian; ?>"
-                                            class="btn btn-sm btn-danger">Hapus</a>
+                                            class="btn btn-sm btn-danger <?php if ($no_transaksi)
+                                                echo 'disabled'; ?>">Hapus</a>
+
                                     </td>
                                 </tr>
                                 <?php
@@ -225,13 +249,15 @@ mysqli_close($conn);
                     </table>
                     <div class="text-right">
                         <a href="tambah_item_cucian.php?no_cucian=<?php echo $noCucian; ?>"
-                            class="btn btn-primary">Tambah
-                            Item</a>
+                            class="btn btn-primary <?php if ($no_transaksi)
+                                echo 'disabled'; ?>">Tambah Item</a>
+
 
                     </div>
                     <div id="edit-form-container"></div>
                 </div>
             </div>
+
         </div>
     </section>
 </main>

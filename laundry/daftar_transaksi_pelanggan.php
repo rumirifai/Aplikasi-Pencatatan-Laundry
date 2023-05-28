@@ -19,6 +19,21 @@ $query = "SELECT t.*, c.jenis_prioritas, s.jenis_status_transaksi
           ORDER BY t.tgl_transaksi DESC";
 $result = mysqli_query($conn, $query);
 
+// Memisahkan transaksi yang belum dibayar dan sudah dibayar
+$unpaidTransactions = array();
+$paidTransactions = array();
+
+while ($row = mysqli_fetch_assoc($result)) {
+    if ($row['jenis_status_transaksi'] == 'Belum Bayar') {
+        $unpaidTransactions[] = $row;
+    } else {
+        $paidTransactions[] = $row;
+    }
+}
+
+// Menggabungkan transaksi yang belum dibayar dan sudah dibayar
+$mergedTransactions = array_merge($unpaidTransactions, $paidTransactions);
+
 mysqli_close($conn);
 ?>
 
@@ -33,7 +48,7 @@ mysqli_close($conn);
                 </div>
             </div>
             <div class="row">
-                <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                <?php foreach ($mergedTransactions as $row): ?>
                 <div class="col-lg-4">
                     <div class="card">
                         <div class="card-body">
@@ -62,7 +77,7 @@ mysqli_close($conn);
                         </div>
                     </div>
                 </div>
-                <?php endwhile; ?>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
