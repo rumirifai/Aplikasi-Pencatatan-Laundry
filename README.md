@@ -61,11 +61,6 @@ Berikut Entity Relationship Diagram dari aplikasi pencatatan laundry yang kami b
 Berikut Tabel Relasi dari aplikasi pencatatan laundry yang kami buat
   ![](img/tabel.png)
 
-<!-- Mockup -->
-## Mockup
-
-TBA
-
 <!-- Bahasa dan Software yang digunakan -->
 ## Bahasa dan Software yang Digunakan
 

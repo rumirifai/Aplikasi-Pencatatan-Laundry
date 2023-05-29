@@ -360,9 +360,7 @@ table.dataTable.display > tbody tr.selected > .sorting_3 {
   box-shadow: inset 0 0 0 9999px rgba(13, 110, 253, 0.919);
   box-shadow: inset 0 0 0 9999px rgba(var(--dt-row-selected, 0.919));
 }
-table.dataTable.display > tbody > tr.odd > .sorting_1, table.dataTable.order-column.stripe > tbody > tr.odd > .sorting_1 {
-  box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.054);
-}
+
 table.dataTable.display > tbody > tr.odd > .sorting_2, table.dataTable.order-column.stripe > tbody > tr.odd > .sorting_2 {
   box-shadow: inset 0 0 0 9999px rgba(0, 0, 0, 0.047);
 }

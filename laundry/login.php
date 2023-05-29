@@ -1,67 +1,61 @@
 <?php
 include "config.php";
 
-
-// Inisialisasi variabel untuk menyimpan pesan error
-$error = "";
+session_start();
 
 // Memeriksa apakah form login telah disubmit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Mengambil data dari form login
   $username = $_POST["username"];
   $password = $_POST["password"];
 
-  // Mencari data admin berdasarkan username
-  $adminQuery = "SELECT * FROM Admin WHERE username='$username'";
-  $adminResult = mysqli_query($conn, $adminQuery);
+  // Query SQL untuk mendapatkan data admin dari database berdasarkan username
+  $query = "SELECT * FROM admin WHERE username='$username'";
+  $result = mysqli_query($conn, $query);
 
-  // Mencari data pelanggan berdasarkan username
-  $pelangganQuery = "SELECT * FROM Pelanggan WHERE username='$username'";
-  $pelangganResult = mysqli_query($conn, $pelangganQuery);
+  if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $storedPassword = $row['password'];
 
-  if (mysqli_num_rows($adminResult) == 1) {
-    // Jika data ditemukan di tabel Admin
-    $row = mysqli_fetch_assoc($adminResult);
-    $adminPassword = $row["password"];
-
-    // Memverifikasi password
-    if ($password == $adminPassword) {
-      // Jika password cocok, login berhasil sebagai admin
-      session_start();
-      $_SESSION["username"] = $username;
-      $_SESSION["role"] = "admin";
+    // Memeriksa kecocokan password
+    if ($password === $storedPassword) {
+      // Jika password cocok, set $_SESSION['username'] dan redirect ke halaman dashboard admin
+      $_SESSION['username'] = $username;
       header("Location: dashboard_admin.php");
       exit();
     } else {
       // Jika password tidak cocok, tampilkan pesan error
       $error = "Username atau password salah.";
     }
-  } elseif (mysqli_num_rows($pelangganResult) == 1) {
-    // Jika data ditemukan di tabel Pelanggan
-    $row = mysqli_fetch_assoc($pelangganResult);
-    $pelangganPassword = $row["password"];
+  } else {
+    // Jika username tidak ditemukan di admin, cari di tabel pelanggan
+    $query = "SELECT * FROM pelanggan WHERE username='$username'";
+    $result = mysqli_query($conn, $query);
 
-    // Memverifikasi password
-    if (password_verify($password, $pelangganPassword)) {
-      // Jika password cocok, login berhasil sebagai pelanggan
-      session_start();
-      $_SESSION['username'] = $username;
-      $_SESSION['role'] = 'pelanggan';
-      $_SESSION['id_pelanggan'] = $row['id_pelanggan'];
-      header("Location: dashboard_pelanggan.php");
-      exit();
+    if (mysqli_num_rows($result) > 0) {
+      $row = mysqli_fetch_assoc($result);
+      $storedPassword = $row['password'];
+
+      // Memeriksa kecocokan password
+      if (password_verify($password, $storedPassword)) {
+        // Jika password cocok, set $_SESSION['username'] dan $_SESSION['role'] sesuai data pelanggan
+        $_SESSION['username'] = $username;
+        $_SESSION['role'] = 'pelanggan';
+        $_SESSION['id_pelanggan'] = $row['id_pelanggan'];
+        header("Location: dashboard_pelanggan.php");
+        exit();
+      } else {
+        // Jika password tidak cocok, tampilkan pesan error
+        $error = "Username atau password salah.";
+      }
     } else {
-      // Jika password tidak cocok, tampilkan pesan error
+      // Jika username tidak ditemukan, tampilkan pesan error
       $error = "Username atau password salah.";
     }
-  } else {
-    // Jika username tidak ditemukan di kedua tabel
-    $error = "Username atau password salah.";
   }
 }
+
 mysqli_close($conn);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -79,9 +73,7 @@ mysqli_close($conn);
   <link href="assets/img/logo.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/css/bootstrap.min.css" rel="stylesheet">
@@ -101,7 +93,7 @@ mysqli_close($conn);
     margin: 0 auto;
     margin-top: 150px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #569DAA;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
@@ -121,13 +113,13 @@ mysqli_close($conn);
   }
 
   a.register-link {
-    font-weight: bold;
-    color: #4154f1;
-    text-decoration: none;
+  font-weight: bold;
+  color: #001aff;
+  text-decoration: none;
   }
 
   a.register-link:hover {
-    color: #2f6aff;
+  color: #2f6aff;
   }
 </style>
 
@@ -162,8 +154,7 @@ mysqli_close($conn);
         }
         ?>
       </form>
-      <div class="mt-3 text-center">Belum punya akun? <a href="registrasi_pelanggan.php" class="register-link">Daftar
-          di sini</a></div>
+      <div class="mt-3 text-center">Belum punya akun? <a href="registrasi_pelanggan.php" class="register-link">Daftar di sini</a></div>
       <a href="index.php" class="btn btn-secondary mt-3">Kembali ke Halaman Awal</a>
     </div>
   </div>
@@ -173,6 +164,6 @@ mysqli_close($conn);
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="assets/vendor/js/bootstrap.min.js"></script>
 </body>
-
 </html>
+
 <?php include 'footer.php'; ?>

@@ -79,7 +79,7 @@ mysqli_close($conn);
   <link rel="stylesheet" href="style.css">
   <style>
     body {
-      background-color: #f8f9fa;
+      background-color: #B9EDDD;
     }
 
     .container {
@@ -87,7 +87,7 @@ mysqli_close($conn);
       margin: 0 auto;
       margin-top: 150px;
       padding: 20px;
-      background-color: #fff;
+      background-color: #569DAA;
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
@@ -129,7 +129,7 @@ mysqli_close($conn);
     }
 
     a {
-      color: #007bff;
+      color: #001aff;
       text-decoration: none;
     }
 
