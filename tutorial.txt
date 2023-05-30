@@ -1,0 +1,13 @@
+## Cara Menjalankan Proyek:
+
+Link Repository: https://github.com/rumirifai/Aplikasi-Pencatatan-Laundry/tree/main
+
+* Instal XAMPP Pada Device Pribadi
+* Clone / Download Semua Isi Repository Ini Pada file htdocs di folder XAMPP Pribadi
+* Buka XAMPP control panel dan jalankan MySql dan Apache
+* Buka browser ketikkan "localhost/phpmyadmin"
+* Buat database baru dan impor file laundry.sql dari file yang telah di clone / download
+* Buka file config.php pada folder laundry (/localhost/Project-Website-Laundry/laundry/config.php).
+* Sesuaikan 'host', 'user', 'password' dan 'database' sesuai dengan database anda
+* Buka tab baru pada browser lalu ketikkan "/localhost/Project-Website-Laundry/laundry/index.php"
+* Akan muncul sebuah tab berisi landing page website
