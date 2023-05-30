@@ -69,3 +69,8 @@ Untuk bahasa dan software yang kami gunakan antara lain:
 * PHP untuk membuat sistem CRUD
 * HTML untuk membuat struktur web
 * CSS untuk membuat tampilan web
+
+
+## Link Repository
+
+https://github.com/rumirifai/Aplikasi-Pencatatan-Laundry/tree/main
